@@ -1,0 +1,9 @@
+<layout-use template="./layout.marko">
+    <layout-put into="page-title">Release</layout-put>
+    <layout-put into="body">
+        <async-fragment data-provider="data.releaseDataProvider" var="release">
+            <h2>$release.title: $release.year</h2>
+        </async-fragment>
+    </layout-put>
+</layout-use>
+
