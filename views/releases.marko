@@ -1,0 +1,13 @@
+<layout-use template="./layout.marko">
+    <layout-put into="page-title">Releases</layout-put>
+    <layout-put into="body">
+        <async-fragment data-provider="data.releasesDataProvider" var="releases">
+            <ul if="notEmpty(releases)">
+                <li for="release in releases">
+                    <h2><a href="/release/$release.id">$release.title: $release.year</a></h2>
+                </li>
+            </ul>
+        </async-fragment>
+    </layout-put>
+</layout-use>
+
