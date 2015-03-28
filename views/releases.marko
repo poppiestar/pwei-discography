@@ -4,7 +4,7 @@
         <async-fragment data-provider="data.releasesDataProvider" var="releases">
             <ul if="notEmpty(releases)">
                 <li for="release in releases">
-                    <h2><a href="/release/$release.id">$release.title: $release.year</a></h2>
+                    <h2><a href="/release/$release.id">$release.title</a></h2>
                 </li>
             </ul>
         </async-fragment>

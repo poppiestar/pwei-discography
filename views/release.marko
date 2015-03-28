@@ -2,7 +2,41 @@
     <layout-put into="page-title">Release</layout-put>
     <layout-put into="body">
         <async-fragment data-provider="data.releaseDataProvider" var="release">
-            <h2>$release.title: $release.year</h2>
+            <h2>$release.title</h2>
+            <ul if="notEmpty(release.artists)">
+                <li for="artist in release.artists">
+                    <a href="/artists/$artist.id">$artist.title</a>
+                </li>
+            </ul>
+
+            <p>Year: <a href="/year/$release.year">$release.year</a></p>
+
+            <h3>Tracks</h3>
+            <ul if="notEmpty(release.tracks)">
+                <li for="track in release.tracks">
+                    <a href="/track/$track.id">$track.title</a> $track.length
+                </li>
+            </ul>
+
+            <h3 if="notEmpty(release.versions)">Versions ($release.versions.length)</h3>
+            <table if="notEmpty(release.versions)">
+                <thead>
+                    <th>Title (Format)</th>
+                    <th>Label</th>
+                    <th>Catalogue #</th>
+                    <th>Country</th>
+                    <th>Year</th>
+                </thead>
+                <tbody>
+                    <tr for="version in release.versions">
+                        <td><a href="/version/$version.id">$version.title</a> ($version.format, $version.type)</td>
+                        <td><a href="/label/$version.label.id">$version.label.title</a></td>
+                        <td>$version.catalogue</td>
+                        <td><a href="/country/$version.country.id">$version.country.title</a></td>
+                        <td><a href="/year/$version.date">$version.date</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </async-fragment>
     </layout-put>
 </layout-use>
