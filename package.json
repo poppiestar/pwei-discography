@@ -29,7 +29,8 @@
   "homepage": "https://github.com/poppiestar/pwei-discography",
   "dependencies": {
     "express": "^4.12.3",
-    "marko": "^2.2.0"
+    "marko": "^2.2.0",
+    "underscore": "^1.8.2"
   },
   "devDependencies": {
     "dyson": "^0.4.0",

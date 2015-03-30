@@ -2,11 +2,15 @@
     <layout-put into="page-title">Releases</layout-put>
     <layout-put into="body">
         <async-fragment data-provider="data.releasesDataProvider" var="releases">
-            <ul if="notEmpty(releases)">
-                <li for="release in releases">
-                    <h2><a href="/release/$release.id">$release.title</a></h2>
-                </li>
-            </ul>
+            <div for="(releaseType, releaseGroup) in releases">
+                <h2>$releaseType</h2>
+                <ul if="notEmpty(releaseGroup)">
+                    <li for="release in releaseGroup">
+                        <h2><a href="/release/$release.id">$release.title</a></h2>
+                        <p if="notEmpty(release.versions)">Versions: $release.versions.length</p>
+                    </li>
+                </ul>
+            </div>
         </async-fragment>
     </layout-put>
 </layout-use>
